@@ -13,7 +13,7 @@ const SideBar = () => {
     const [isFiltered, setIsFiltered] = useState(false)
     const {classes, getClasses} = useClassStore()
     const {getStudents, getStudentsByClass} = useStudentsStore()
-    const {setQuerySearch, querySearch} = useAnonymousStore()
+    const {setQuerySearch} = useAnonymousStore()
 
     const handleClick = () => {
         setActiveSideBar(false)
