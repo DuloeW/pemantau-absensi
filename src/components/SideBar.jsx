@@ -13,7 +13,7 @@ const SideBar = () => {
     const [isFiltered, setIsFiltered] = useState(false)
     const {classes, getClasses} = useClassStore()
     const {getStudents, getStudentsByClass} = useStudentsStore()
-    const {setQuerySearch} = useAnonymousStore()
+    const {setQuerySearch, querySearch} = useAnonymousStore()
 
     const handleClick = () => {
         setActiveSideBar(false)
@@ -46,6 +46,11 @@ const SideBar = () => {
     const backToDefault = () => {
         getStudents()
         setQuerySearch('')
+        setQuery(prev => ({
+            ...prev,
+            grade: '',
+            major: ''
+        }))
         setIsFiltered(false)
     }
 
@@ -123,8 +128,11 @@ const SideBar = () => {
                     </div>
                 </div>
                 <div className='w-full grid place-items-center'>
-                    <button className='px-10 py-3 border-none outline-none bg-teal-900 text-white rounded-xl font-semibold'
+                    <button className={`px-10 py-3 border-none outline-none bg-teal-900 text-white rounded-xl font-semibold
+                        ${query.grade !== '' && query.major !== '' ? '' : 'bg-neutral-100 text-neutral-400'}
+                    `}
                             type={"button"}
+                            disabled={query.grade !== '' && query.major !== '' ? false : true}
                             onClick={() => handleClick()}
                     >
                         Terapkan
