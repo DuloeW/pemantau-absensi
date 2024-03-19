@@ -2,7 +2,7 @@ import Cookies from 'js-cookie';
 import axios from "axios";
 
 
-const token = Cookies.get('token');
+const token = Cookies.get('token-pantau');
 axios.defaults.baseURL = 'http://localhost:8790/api/v1/';
 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
