@@ -49,7 +49,7 @@ const DetailStudentPage = () => {
     }, [queryDate.date]);
 
     return (
-        <div className='w-full h-[calc(100vh-0px)] relative bg-teal-700 overflow-y-auto'>
+        <div className='w-full h-[calc(100vh)] relative bg-teal-700 overflow-y-auto'>
             <button className='absolute z-50 top-5 left-8 flex gap-2 py-1
              text-white font-bold border-b-2'
                 onClick={() => navigateBack()}
@@ -97,8 +97,8 @@ const DetailStudentPage = () => {
                             onClick={() => resetDate()}
                         >ulangi</button>
                     </div>
-                    <div className='overflow-y-auto w-full h-full pb-5'>
-                        <div className='w-full h-full mt-3 flex flex-wrap gap-4'>
+                    <div className='overflow-y-auto w-full h-fit pb-5'>
+                        <div className='w-full h-fit mt-3 flex flex-wrap gap-4'>
                             {absensiStudent?.map((absensi) => (
                                 <div key={absensi.id}
                                      className='p-2 w-full h-fit font-semibold rounded-md bg-white shadow-md'>
