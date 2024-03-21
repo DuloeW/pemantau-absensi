@@ -49,7 +49,7 @@ const DetailStudentPage = () => {
     }, [queryDate.date]);
 
     return (
-        <div className='w-full h-[calc(100vh)] relative bg-teal-700 overflow-y-auto'>
+        <div className='w-full h-[calc(100vh)] relative bg-teal-700'>
             <button className='absolute z-50 top-5 left-8 flex gap-2 py-1
              text-white font-bold border-b-2'
                 onClick={() => navigateBack()}
@@ -87,21 +87,23 @@ const DetailStudentPage = () => {
                 <div className='p-5 w-full h-fit'>
                     <h1 className='font-bold text-lg opacity-80'>Detail Absensi</h1>
                     <div className='flex gap-3 mb-3 relative'>
-                        <FontAwesomeIcon icon={faCalendar} className='text-lg text-neutral-300 absolute left-2 top-2/4 -translate-y-2/4'/>
+                        <FontAwesomeIcon icon={faCalendar}
+                                         className='text-lg text-neutral-300 absolute left-2 top-2/4 -translate-y-2/4'/>
                         <input className='bg-white shadow-md p-2 pl-8 rounded-md outline-none border-none'
-                            type="date"
-                            value={queryDate.date}
-                            onChange={(e) => handleSetDate(e)}
+                               type="date"
+                               value={queryDate.date}
+                               onChange={(e) => handleSetDate(e)}
                         />
                         <button className='bg-red-900 text-white px-5 py-2 rounded-md font-semibold hover:'
-                            onClick={() => resetDate()}
-                        >ulangi</button>
+                                onClick={() => resetDate()}
+                        >ulangi
+                        </button>
                     </div>
                     <div className='overflow-y-auto w-full h-fit pb-5'>
                         <div className='w-full h-fit mt-3 flex flex-wrap gap-4'>
                             {absensiStudent?.map((absensi) => (
                                 <div key={absensi.id}
-                                     className='p-2 w-full h-fit font-semibold rounded-md bg-white shadow-md'>
+                                     className='p-2 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 h-fit font-semibold rounded-md bg-white shadow-md'>
                                     <div className='flex gap-5 text-sm'>
                                         <p>{absensi.date}</p>
                                         <p>{absensi.time}</p>
