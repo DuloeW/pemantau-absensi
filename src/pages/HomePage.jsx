@@ -6,7 +6,8 @@ import {faArrowUp, faSearch} from "@fortawesome/free-solid-svg-icons";
 import SideBar from "../components/SideBar.jsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import BoxStudent from "../components/BoxStudent.jsx";
-import {useEffect, useState} from "react";
+import {Suspense, useEffect, useState} from "react";
+import LoadinMountComponent from "../components/LoadinMountComponent.jsx";
 
 
 const HomePage= () => {
@@ -53,18 +54,6 @@ const HomePage= () => {
     }
 
     useEffect(() => {
-        const login = async () => {
-            try {
-                const response = await axios.post('user/login', {
-                    email: 'orangtuasiswa@gmail.com',
-                    password: 'eiwoe82sdsd'
-                })
-                Cookies.set('token', response.data.token, { expires: 7 })
-            }catch (e) {
-                console.log(e)
-            }
-        }
-        login()
         getStudents()
     }, [])
 
@@ -94,12 +83,13 @@ const HomePage= () => {
                 </div>
                 <div className='mt-10 pb-5 w-full h-fit flex flex-col items-center gap-20 overflow-y-auto md:flex-row md:flex-wrap md:justify-evenly'>
                     {students?.map((student) => (
-                        <div key={student.id} className={`
-                            ${selectedStudent !== null && student.id !== idActive.id ? 'pointer-events-none' : 'pointer-events-auto '}
-                        `} >
-                            <BoxStudent style={style.customShadow} onClick={handleStudentClicked} student={student}/>
-                        </div>
-                    ))}
+                            <div key={student.id} className={`
+                                ${selectedStudent !== null && student.id !== idActive.id ? 'pointer-events-none' : 'pointer-events-auto '}
+                            `}>
+                                <BoxStudent style={style.customShadow} onClick={handleStudentClicked}
+                                    student={student}/>
+                            </div>
+                        ))}
                     {students.length === 0 && (
                         <div className='w-full h-full flex justify-center items-center'>
                             <p className='text-2xl font-semibold text-neutral-300'>Siswa Tidak Ada!!</p>
