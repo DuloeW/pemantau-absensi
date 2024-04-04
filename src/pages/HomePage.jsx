@@ -6,8 +6,7 @@ import {faArrowUp, faSearch} from "@fortawesome/free-solid-svg-icons";
 import SideBar from "../components/SideBar.jsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import BoxStudent from "../components/BoxStudent.jsx";
-import {Suspense, useEffect, useState} from "react";
-import LoadinMountComponent from "../components/LoadinMountComponent.jsx";
+import {useEffect, useState} from "react";
 
 
 const HomePage= () => {
@@ -54,16 +53,8 @@ const HomePage= () => {
     }
 
     useEffect(() => {
-        getStudents()
-    }, [])
-
-    useEffect(() => {
         setIdActive(prevState => ({...prevState, id: null}))
     }, [loadingIsVisible]);
-
-    // useEffect(() => {
-    //     getStudentsByClass(querySearch)
-    // }, [querySearch]);
 
     return (
         <div className={`w-full relative bg-white
