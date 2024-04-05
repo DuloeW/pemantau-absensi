@@ -67,10 +67,9 @@ const LoginPage = () => {
         }
     }
 
-    //TODO Menambahkan POPUP login gagal
     return (
         <div className='relative w-full h-[clack(100%-0px)] p-8 overflow-hidden md:h-screen md:flex md:items-center md:justify-between md:gap-4'>
-            <img className='w-[290px] mt-2 drop-shadow-lg shadow-teal-950 md:w-[400px]'
+            <img className='w-[290px] mt-2 drop-shadow-2xl shadow-teal-950 md:w-[400px]'
                 src={personIcon}
                 alt="blob" />
             <div className='w-full flex flex-col md:shadow-2xl md:p-5 md:bg-white md:rounded-xl'>

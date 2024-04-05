@@ -3,6 +3,7 @@ import {faRefresh} from "@fortawesome/free-solid-svg-icons";
 import {useState} from "react";
 import useAnonymousStore from "../store/AnonymousStore.js";
 import {useNavigate} from "react-router-dom";
+import Swal from 'sweetalert2'
 
 const AlertValidation = ({onClick, student}) => {
     const navigate = useNavigate()
@@ -42,23 +43,31 @@ const AlertValidation = ({onClick, student}) => {
         const inputDate = dateBorn.date
         const studentDate = student?.dateOfBirth
         if (inputDate === studentDate) {
+            Swal.fire({
+                title: 'Berhasil!',
+                text: 'Pantauan berhasil dilakukan',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+            })
             return true
         } else {
             setDateBorn({date: ''})
+            Swal.fire({
+                title: 'Gagal!',
+                text: 'Tanggal lahir tidak sesuai dengan data siswa',
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+            })
             return false
         }
     }
 
     return (
         <div className='p-5 w-full h-full relative'>
-            {loading && (
-                <>
-                    <div className='absolute w-full h-full top-0 right-0 bg-neutral-500 opacity-70 z-50'></div>
-                    <div className='absolute left-2/4 top-2/4 -translate-y-2/4 -translate-x-2/4 z-50'>
-                        <FontAwesomeIcon icon={faRefresh} className='animate-spin text-3xl text-white'/>
-                    </div>
-                </>
-            )}
             <div className='pb-1 border-b-2'>
                 <p className='text-2xl font-semibold'>Nama</p>
                 <p className='font-semibold mt-2'>{student.name}</p>
