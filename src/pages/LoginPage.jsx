@@ -1,7 +1,7 @@
 import personIcon from '../assets/Programming-cuate.svg';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope, faEye, faEyeSlash, faLock, faRefresh} from "@fortawesome/free-solid-svg-icons";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "../axios/index.js";
 import Cookies from "js-cookie";
 import {useNavigate} from "react-router-dom";
@@ -66,6 +66,14 @@ const LoginPage = () => {
             loadingNonActive()
         }
     }
+
+    useEffect(() => {
+        const unauthorized = localStorage.getItem('unauthorized')
+
+        if (unauthorized === '1') {
+            alert('Sesi anda telah berakhir, silahkan login kembali')
+        }
+    }, [])
 
     return (
         <div className='relative w-full h-[clack(100%-0px)] p-8 overflow-hidden md:h-screen md:flex md:items-center md:justify-between md:gap-4'>

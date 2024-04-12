@@ -1,13 +1,19 @@
-import Cookies from 'js-cookie';
 import axios from "axios";
+import Cookies from "js-cookie";
 
+axios.defaults.baseURL = "http://localhost:8790/api/v1/";
 
-const token = Cookies.get('token-pantau');
-axios.defaults.baseURL = 'http://localhost:8790/api/v1/';
-axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-
-if (token === undefined) {
-    console.log('Token not found');
-}
+// Set up a request interceptor
+axios.interceptors.request.use(function (config) {
+    // Do something before request is sent
+    let token = Cookies.get("token-pantau");
+    if (token) {
+        config.headers.Authorization = 'Bearer ' + token;
+    }
+    return config;
+}, function (error) {
+    // Do something with request error
+    return Promise.reject(error);
+});
 
 export default axios;

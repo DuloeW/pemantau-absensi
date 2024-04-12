@@ -1,4 +1,5 @@
 import {create} from "zustand";
+import {goToLoginPage} from "../util/Tool.js";
 import axios from "../axios/index.js";
 
 
@@ -22,6 +23,9 @@ const useStudentsStore = create((set, get) => ({
             // set({tenStudentsFirsts});
         } catch (error) {
             console.log(error);
+            if(error.code === "ERR_BAD_REQUEST" && (window.location.pathname !== '/login')) {
+                goToLoginPage()
+            }
         }
     },
     getStudent: async (id) => {
@@ -31,6 +35,9 @@ const useStudentsStore = create((set, get) => ({
             set({student: dataResponse});
         } catch (error) {
             console.log(error);
+            if(error.code === "ERR_BAD_REQUEST" && (window.location.pathname !== '/login')) {
+                goToLoginPage()
+            }
         }
     },
     searchStudent: async (keyword) => {
@@ -39,6 +46,9 @@ const useStudentsStore = create((set, get) => ({
             set({students: response.data.data});
         } catch (error) {
             console.log(error);
+            if(error.code === "ERR_BAD_REQUEST" && (window.location.pathname !== '/login')) {
+                goToLoginPage()
+            }
         }
     },
     getStudentsByClass: async (keyword) => {
@@ -50,6 +60,9 @@ const useStudentsStore = create((set, get) => ({
             set({students: response.data.data});
         } catch (error) {
             console.log(error);
+            if(error.code === "ERR_BAD_REQUEST" && (window.location.pathname !== '/login')) {
+                goToLoginPage()
+            }
         }
     }
 }));
