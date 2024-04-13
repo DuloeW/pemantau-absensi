@@ -14,7 +14,7 @@ const App = () => {
     const {getStudents} = useStudentsStore()
     useEffect(() => {
         getStudents()
-    }, [])
+    }, [getStudents])
     const router = createBrowserRouter([
         {
             path: '/',
