@@ -33,6 +33,8 @@ const HomePage= () => {
 
     const handleSearch = (e) => {
         let keyword = e.target.value
+        setIdActive({id: null});
+        setSelectedStudent(null);
         if (keyword === '') {
             if(querySearch !== '') {
                 getStudentsByClass(querySearch)
