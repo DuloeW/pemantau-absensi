@@ -44,7 +44,7 @@ const LoginPage = () => {
         try {
             loadingActive()
             const response = await axios.post('user/login', form)
-            Cookies.set('token-pantau', response.data.token, {expires: 1})
+            Cookies.set('token-pantau', response.data.token, {expires: 7})
             Swal.fire({
                 title: 'Berhasil!',
                 text: 'Anda berhasil login',
