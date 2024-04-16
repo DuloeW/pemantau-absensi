@@ -60,6 +60,8 @@ const HomePage= () => {
     useEffect(() => {
         return () => {
             console.log(querySearch)
+            setIdActive({id: null});
+            setSelectedStudent(null);
             if(querySearch !== '') {
                 getStudentsByClass(querySearch)
             } else {
